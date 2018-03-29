@@ -57,7 +57,7 @@
     function run() {
         console.log = print;
         eval(editor.getSession().getValue());
-        print(test());
+        //print(test());
         code[prog] = editor.getSession().getValue();
         localStorage.code = JSON.stringify(code);
         return;
