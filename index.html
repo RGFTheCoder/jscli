@@ -1,0 +1,73 @@
+<div id="editor">function test() {}</div>
+<div onclick="run()" id="out">ff</div>
+
+<style>
+* {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  font-size: 10.5pt !important;
+}
+
+#editor {
+  width: 100%;
+  height: 50%;
+  display: block;
+  left: 0;
+  top: 0;
+  display: inline-block;
+}
+
+
+div.out {
+  width: 100%;
+  height: 50%;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+}
+
+button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 5%;
+}
+</style>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+<script>
+var d = console.log;
+var searchParams = new URLSearchParams(window.location.search);
+
+var prog = searchParams.get('p');
+if(typeof localStorage[prog] == "undefined") {
+       localStorage[prog] = "function test() {}"
+}
+document.getElementById("editor").innerHTML = localStorage[prog];
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+editor.session.setMode("ace/mode/javascript");
+var out = "";
+
+
+function run() {
+    console.log = print;
+    eval(editor.getSession().getValue());
+    print(test());
+localStorage[prog] = editor.getSession().getValue();
+  return;
+}
+
+
+var jji = document.getElementById("out");
+
+// jji.onclick = run;
+// jji.onmousemove = run;
+setInterval(run, 1000/60);
+function print(str) {
+  jji.innerHTML = str;
+}
+</script>
