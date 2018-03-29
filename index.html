@@ -56,11 +56,11 @@
     
     function run() {
         console.log = print;
+        clear();
         eval(editor.getSession().getValue());
         //print(test());
         code[prog] = editor.getSession().getValue();
         localStorage.code = JSON.stringify(code);
-        clear();
         return;
     }
     
