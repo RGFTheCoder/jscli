@@ -8,7 +8,7 @@
     var code = JSON.parse(localStorage.code);
 
     for (name in code) {
-        ul.innerHTML += name + "<br>";
+        ul.innerHTML += "<li><a href=\"./index.html/?p="+name+"\">" + name + "</a></li>";
     }
 
 </script>
