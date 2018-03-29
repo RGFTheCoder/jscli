@@ -60,6 +60,7 @@
         //print(test());
         code[prog] = editor.getSession().getValue();
         localStorage.code = JSON.stringify(code);
+        clear();
         return;
     }
     
@@ -71,5 +72,8 @@
     setInterval(run, 1000/60);
     function print(str) {
       jji.innerHTML += str + "<br>";
+    }
+    function clear() {
+      jji.innerHTML = "";
     }
 </script>
