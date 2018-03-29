@@ -1,5 +1,5 @@
 <h1>JS CLI</h1>
-<button onclick="new()">New</button>
+<button onclick="newcode()">New</button>
 <ul id="list">
     <li>code</li>
 </ul>
@@ -11,6 +11,11 @@
 
     for (name in code) {
         ul.innerHTML += "<li><a href=\"./index.html?p="+name+"\">" + name + "</a></li>";
+    }
+
+    function newcode() {
+        var name = prompt("NameL: ");
+        ul.innerHTML += "<li><a href=\"./index.html?p="+name+"\">" + name + "</a></li>"
     }
 
 </script>
