@@ -43,10 +43,11 @@ var d = console.log;
 var searchParams = new URLSearchParams(window.location.search);
 
 var prog = searchParams.get('p');
-if(typeof localStorage[prog] == "undefined") {
-       localStorage[prog] = "function test() {}"
+var code = JSON.parse(localStorage.code);
+if(typeof code[prog] == "undefined") {
+    code[prog] = "function test() {}"
 }
-document.getElementById("editor").innerHTML = localStorage[prog];
+document.getElementById("editor").innerHTML = code[prog];
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/javascript");
@@ -57,8 +58,9 @@ function run() {
     console.log = print;
     eval(editor.getSession().getValue());
     print(test());
-localStorage[prog] = editor.getSession().getValue();
-  return;
+    code[prog] = editor.getSession().getValue();
+    localStorage.code = JSON.stringify(code);
+    return;
 }
 
 
