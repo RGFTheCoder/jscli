@@ -1,3 +1,14 @@
 <ul>
     <li>code</li>
 </ul>
+
+<script>
+    var ul = document.getElementById("list");
+    ul.innerHTML = "";
+    var code = JSON.parse(localStorage.code);
+
+    for (name in code) {
+        ul.innerHTML += name + "<br>";
+    }
+
+</script>
